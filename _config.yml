@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: C☕ffee 🅱️ytes
+title: C☕ffee Bytes
 
 # Your name to show in the footer
 author: Adrian Jenkins
@@ -22,9 +22,9 @@ author: Adrian Jenkins
 navbar-links:
   About Me: "aboutme"
   Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+    - Beautiful Jekyll: ""
+    - Learn markdown: ""
+  Author's home: ""
 
 ################
 # --- Logo --- #
