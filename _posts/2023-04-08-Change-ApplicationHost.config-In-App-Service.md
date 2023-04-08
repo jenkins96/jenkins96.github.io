@@ -7,7 +7,7 @@ gh-badge: [star, fork, follow]
 tags: [app service, iis]
 comments: true
 ---
-# Table of contents
+## Table of contents
 1. [Where Is AppHost File Located](#where-is-applicationhostconfig-located)
 2. [Modify AppHost File](#how-to-modify-applicationhostconfig-file#how-to-modify-applicationhostconfig-file)
     1. [Private Extensions](#private-extensions)
