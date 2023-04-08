@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 gemspec
-
+=begin
 group :test do
   gem "html-proofer", "~> 3.18"
 end
@@ -25,3 +25,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 if RUBY_PLATFORM =~ /linux-musl/
   gem "jekyll-sass-converter", "~> 2.0"
 end
+
+=end
