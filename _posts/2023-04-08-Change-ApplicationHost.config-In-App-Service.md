@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Change ApplicationHost.config In App Service
-[comment]: <> (subtitle: Each post also has a subtitle)
+subtitle: Guide
 gh-repo: jenkins96/jenkins96.github.io
 gh-badge: [star, fork, follow]
 tags: [app service, iis]
