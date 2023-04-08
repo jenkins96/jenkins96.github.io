@@ -18,8 +18,7 @@ layout: base
             {% for badge in page.gh-badge %}
               {% case badge %}
                 {% when 'star'%}
-                  <a href="https://www.buymeacoffee.com/adrianjnknQ" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me Two Coffees" height="41" width="174" style="padding: 0 0 1em 0;"></a>
-        </br>
+                 
                   <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
                 {% when 'watch'%}
                   <iframe src="https://ghbtns.com/github-btn.html?user={{ gh_user }}&repo={{ gh_repo }}&type=watch&v=2&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
