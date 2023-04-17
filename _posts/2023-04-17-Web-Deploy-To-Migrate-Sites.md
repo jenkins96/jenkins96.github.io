@@ -82,7 +82,6 @@ Web Deploy DOES NOT backup Application Pools nor SSL/TLS certificates.
    ```
    %windir%\System32\inetsrv\appcmd.exe restore backup “MyBackup”
    ```
- 
    * Use msdeploy.exe to backup both, IIS configuration + content of whole IIS server sites.
      ```
      msdeploy -verb:sync -source:webServer -dest:package=c:\_WebDeploy\PreWebDeploy.zip
@@ -145,7 +144,7 @@ msdeploy -verb:getDependencies -source:webServer > c:\_Webdeploy\DestinationServ
 4. Create the package in Origin server.
 MsDeploy.exe has a parameter "-whatif". With this parameter it will tell you what would happen wihthout making any actual changes.
 
-** ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
+**ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
 
 The "-enableLink:AppPoolExtension" throws the Application Pool into the package!
 
@@ -166,7 +165,7 @@ msdeploy -verb:sync -source:apphostconfig="NAMEOFSITE" -dest:package=c:\site1.zi
 ### Restore
 MsDeploy.exe has a parameter "-whatif". With this parameter it will tell you what would happen wihthout making any actual changes.
 
-** ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
+**ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
 
 ```
 # Server Package
@@ -181,7 +180,6 @@ msdeploy -verb:sync -source:package=c:\site1.zip -dest:apphostconfig="NAMEOFSITE
 
 
 
- 
  
 
 
