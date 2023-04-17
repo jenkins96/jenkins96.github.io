@@ -105,7 +105,7 @@ Web Deploy DOES NOT backup Application Pools nor SSL/TLS certificates.
 Suppose you want to migrate sites from Windows Server 2016 to Windows Server 2022.
 **I will put commands for both, site and server packages. Use according to your needs**.
 
-1. Creating Backup in Origin and Destination Servers.  
+### Creating Backup in Origin and Destination Servers.  
 
 **Creating IIS configuration backup**
 ```
@@ -126,7 +126,8 @@ msdeploy -verb:sync -source:webServer -dest:package=c:\_WebDeploy\OriginPreWebDe
 msdeploy -verb:sync -source:webServer -dest:package=c:\_WebDeploy\DestinationPreWebDeploy.zip
 ```
 
-2. Match Destination server's modules to Origin server's modules.
+### Modules Matching
+Match Destination server's modules to Origin server's modules.
 
 ```
 # Origin
@@ -137,11 +138,13 @@ msdeploy -verb:getDependencies -source:webServer > c:\_Webdeploy\DestinationServ
 ```
 **MAKE THEM MATCH!**
 
-3. As both OS' are x64, I will proceed to download Web Deploy 3.6 in both, Origin and Destination servers.
+### Download Web Deploy
+As both OS' are x64, I will proceed to download Web Deploy 3.6 in both, Origin and Destination servers.
 
 [Download Web Deploy 3.6](https://www.iis.net/downloads/microsoft/web-deploy).
 
-4. Create the package in Origin server.
+### Creating Package
+Create the package in Origin server.
 MsDeploy.exe has a parameter "-whatif". With this parameter it will tell you what would happen wihthout making any actual changes.
 
 **ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
@@ -158,11 +161,12 @@ msdeploy -verb:sync -source:apphostconfig="NAMEOFSITE" -dest:package=c:\site1.zi
 
  *Note: If asked for encryption then add "encryptPassword=PASSWORD" after the destination. Like so: "-dest:package=c:\_WebDeploy\PreWebDeploy.zip,encryptPassword=123"*
 
-5. Move the package to the destination server.
+### Move the package to the destination server.
+Transfer package from Source to Target server.
 
-6. Restore the package
+### Restore the package
+Restore package in Destination server.
 
-### Restore
 MsDeploy.exe has a parameter "-whatif". With this parameter it will tell you what would happen wihthout making any actual changes.
 
 **ALL BELOW COMMANDS HAVE -WHATIF PARAMETER. REMOVE IT WHEN YOU ARE SURE EVERYTHING IS OK.**
@@ -177,12 +181,6 @@ msdeploy -verb:sync -source:package=c:\site1.zip -dest:apphostconfig="NAMEOFSITE
 ```
 
  *Note: If you created package with encryption, then you need to use that password to restore the package. Add "encryptPassword=PASSWORD" after the destination. Like so: "-dest:package=c:\_WebDeploy\PreWebDeploy.zip,encryptPassword=123"*
-
-
-
- 
-
-
 
 
 ## Resources
