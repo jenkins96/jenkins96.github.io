@@ -78,6 +78,8 @@ Binary is important because this is what computers understand. Computers can onl
 
 ## IP Address
 This is a 32-bit address that identifies a host on a network. It is typically written in dotted-decimal notation. Each number represents an 8 bit number, and this is what the computer understands.
+  
+Meaning we have 2^32 possible values. In other words, only 4.294.967.296 public IP Addresses can be allocated. This could sound like a huge number, but we so many devices today, these addresses are running short. That is why, IPv6 was created. IPv6 supports 2^128 IP's. But this is another discussion. 
 
 Say we have the following IP address:  
 192.168.10.55
