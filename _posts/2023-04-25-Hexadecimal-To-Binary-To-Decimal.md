@@ -86,10 +86,11 @@ This is in decimal, so we understand it. But machines need this in binary. Now, 
 
 00000000.00000000.00000000.00000000
 
-Each octet has 8 bits, or 8 available digits. meaning each octet can count from 0 up to 2^8 = 256. As zero is counting as a number, each octet can a a value from 0-255.  
+Each octet has 8 bits, or 8 available digits. meaning each octet can count from 0 up to 2^8 = 256. As zero is counting as a number, each octet can have a value from 0-255.  
 So, we know we can arrange each octet in 256 unique combinations that make it possible to count from 0 to 255.
 
-Need to memorize this table:  
+Need to memorize this table:
+   
 | Base    | 2^7 | 2^6 | 2^5 | 2^4 | 2^3 | 2^2 | 2^1 | 2^0 |
 |---------|-----|-----|-----|-----|-----|-----|-----|-----|
 | Binary  | 1   | 1   | 1   | 1   | 1   | 1   | 1   | 1   |
