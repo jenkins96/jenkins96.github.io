@@ -208,8 +208,8 @@ Removing intermediate container 886e1cb628e1
  ---> e6506dcdd6b0
 Successfully built e6506dcdd6b0
 Successfully tagged testapp:v1
-
 ```
+
 ## Create And Run Container
 Create container under the name of "testingapp", map host port 8080 to exposed port 80 from container, use image "testapp:v1" run it in the background.
 ```
@@ -238,18 +238,18 @@ docker exec -it testingapp powershell
 * -t =  allocate a pseudo-TTY
 
 IIS comes with a CLI tool that we can use for administration. This is located in "C:\Windows\System32\inetsrv". Change directory to this path and execute following commands to recycle the "DefaultAppPool", change some basic setting and the restart IIS:
+  
 ```
 .\appcmd.exe recycle apppool /apppool.name:'DefaultAppPool'
-
 .\appcmd.exe set config -section:system.applicationHost/applicationPools /+"[name='DefaultAppPool'].recycling.periodicRestart.schedule.[value='03:00:00']" /commit:apphost
-
 iisreset /noforce
-```
+```  
 So, we should see configuration changes and recycle events in logs.
 
 ## Getting Docker Logs
 Open another CMD or Powershell in your host OS, as the other one is in interactive shell, and run following command to extract logs.
-Use only "docker logs <container> " to output directly into terminal. If you want to save output in a txt file, then follow format from below:
+Use only "docker logs <container> " to output directly into terminal. If you want to save output in a txt file, then follow format from below:  
+
 ```
 docker logs testingapp >> C:\DockerLogTest\testing\dockerlogs.txt
 ```
@@ -257,6 +257,7 @@ Output is large, here I just pasted some events.
 We can see we have "Application", "System", "Microsoft-IIS-Configuration/Operational" and "ETW" events. We also can see configurational changes and when we did "iisreset /noforce".
 
 **Everything is showing as expected.** 
+  
 ```
 {"Source":"File","LogEntry":{"Logline":"2023-09-26 15:32:05 172.26.128.182 GET /iisstart.png - 80 - 10.6.0.7 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/117.0.0.0+Safari/537.36+Edg/117.0.2045.41 http://localhost:8080/ 200 0 0 38","FileName":"LogFiles\\W3SVC1\\u_ex230926_x.log"},"SchemaVersion":"1.0.0"}
 {"Source":"File","LogEntry":{"Logline":"2023-09-26 15:32:05 172.26.128.182 GET / - 80 - 10.6.0.7 Mozilla/5.0+(Windows+NT+10.0;+Win64;+x64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/117.0.0.0+Safari/537.36+Edg/117.0.2045.41 - 200 0 0 1290","FileName":"LogFiles\\W3SVC1\\u_ex230926_x.log"},"SchemaVersion":"1.0.0"}
@@ -269,25 +270,31 @@ We can see we have "Application", "System", "Microsoft-IIS-Configuration/Operati
 {"Source": "EventLog","LogEntry": {"Time": "2023-09-26T15:37:03.000Z","Channel": "Microsoft-IIS-Configuration/Operational","Level": "Verbose","EventId": 29,"Message": "Changes to '/system.applicationHost/applicationPools/add[@name=\"DefaultAppPool\"]/recycling/periodicRestart/schedule/add[@value=\"03:00:00\"]' at 'MACHINE/WEBROOT/APPHOST' have successfully been committed."}}
 {"Source": "EventLog","LogEntry": {"Time": "2023-09-26T15:37:03.000Z","Channel": "Microsoft-IIS-Configuration/Operational","Level": "Verbose","EventId": 29,"Message": "Changes to '/system.applicationHost/applicationPools/add[@name=\"DefaultAppPool\"]/recycling/periodicRestart/schedule/add[@value=\"03:00:00\"]/@value' at 'MACHINE/WEBROOT/APPHOST' have successfully been committed."}}
 {"Source": "EventLog","LogEntry": {"Time": "2023-09-26T15:37:03.000Z","Channel": "Microsoft-IIS-Configuration/Operational","Level": "Information","EventId": 50,"Message": "Changes have successfully been committed to 'MACHINE/WEBROOT/APPHOST'."}}
-
-```
+```  
+  
 ## Getting Logs Directly From Event Viewer
 While in interactive shell inside container we can use "wevtutil" to backup desired logs and then transfer them to host OS.
+  
 ```
 wevtutil epl Application C:\AppLogBackup.evtx
 wevtutil epl System C:\SystemBackup.evtx
 wevtutil epl Microsoft-IIS-Configuration/Operational C:\ConfigurationChanges.evtx
 ```
+  
 Now we need to extract those logs from container to host OS. In order for this to work, we need to stop running container.
+  
 ```
 docker stop <container>
 ```
+  
 We can use "docker cp" to accomplish this task.
+  
 ```
 docker cp testingapp:C:\AppLogBackup.evtx C:\DockerLogTest\testing\AppLogBackup.evtx
 docker cp testingapp:C:\SystemBackup.evtx C:\DockerLogTest\testing\SystemBackup.evtx
 docker cp testingapp:C:\ConfigurationChanges.evtx C:\DockerLogTest\testing\ConfigurationChanges.evtx
 ```
+  
 And now you should have those files.
 
 
