@@ -21,6 +21,8 @@ comments: true
 8. [Docker Logs](#getting-docker-logs)
 9. [Logs From EV](#getting-logs-directly-from-event-viewer)
 10. [Resources](#resources)
+  
+ <a href="https://adrianjenkinsq.gumroad.com/l/windows-docker-logs">Support my work here!</a> 
 
 ## Introduction
 In this guide we will collect three Event Viewer Logs from a Docker Container. One of these logs is not enabled by default. So, we will need to enable it with a powershell script and add this to our Dockerfile.
@@ -217,13 +219,15 @@ docker run -d -p 8080:80 --name testingapp testapp:v1
 ```
 * -d = run container in background and print container ID.
 * -p = publish a container's port to the host.
-* --name = names the container.
+* --name = names the container.  
 Output:
+  
 ```
 PS C:\DockerLogTest\testing> docker run -d -p 8080:80 --name testingapp testapp:v1
 5b2be7311d62f799b68d9c61bdb91b4a58f121f0996ae76e3f996ea23ca8f8c3
 PS C:\DockerLogTest\testing>
 ```
+  
 ## Activating IIS Worker Process
 I will restart IIS and change some settings so we see these events in the logs. But before doing this we need to make sure the w3wp.exe is up and running. If it is not up, there is nothing to recycle.
 Browsed to "http:localhost:8080" to activate IIS worker process. 
