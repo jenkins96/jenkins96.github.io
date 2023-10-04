@@ -1,5 +1,13 @@
-
-
+---
+layout: post
+title: Using find Command In Linux
+subtitle: Guide
+gh-repo: jenkins96/jenkins96.github.io
+gh-badge: [star, fork, follow]
+tags: [linux, GNU Linux, find, UNIX]
+comments: true
+---
+  
 ## Using find Command In Linux
 This command is used to find files/directories in a UNIX like systems.
   
