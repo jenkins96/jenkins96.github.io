@@ -1,20 +1,22 @@
-
-
-
-
-
-
+---
+layout: post
+title: Archiving And Compression In Linux
+subtitle: Guide
+gh-repo: jenkins96/jenkins96.github.io
+gh-badge: [star, fork, follow]
+tags: [linux, archiving, compression]
+comments: true
+---
+  
 ## Archiving - tar Command
 The "tar" stands for tape archive. An archive file is a compressed file that contains one or more files bundled together for more accessible storage and portability.
   
 * Archiving: combines multiples files into one.
   
 The "tar" command can: create an archive, extract an archive, and list an archive (without needing to extract it first).
-
-
+  
 ### Basics options
-
-
+  
 | Option | Description                                                                                                |
 |--------|------------------------------------------------------------------------------------------------------------|
 | -c     | Creates an archive by bundling files and directories together.                                             |
@@ -27,10 +29,9 @@ The "tar" command can: create an archive, extract an archive, and list an archiv
 | -xz    | Compress with xz. Extension ".tar.xz".                                                                     |
 | -u     | Archives and adds new files or directories to an existing archive.                                         |
 | -r     | Updates or adds files or directories to an already existing archive without recreating the entire archive. |
-
-
-
+  
 ### Archiving Whole Directory
+  
 ```
 $ tar -cvf LinuxBooks.tar LinuxBooks/
 LinuxBooks/
@@ -45,6 +46,7 @@ file1.txt  file2.txt  image1.jpg  image2.jpg  LinuxBooks  LinuxBooks.tar
 ```
   
 ### Archiving Specific Files
+  
 ```
 $ tar -cvf my_archive.tar image1.jpg file1.txt 
 image1.jpg
@@ -56,6 +58,7 @@ file2.txt  image2.jpg  LinuxBooks.tar
 ```
   
 ### Archiving All .jpg Files
+  
 ```
 $ tar -cvf only_jpg.tar *.jpg
 image1.jpg
@@ -65,9 +68,7 @@ $ ls
 file1.txt  image1.jpg  LinuxBooks      my_archive.tar
 file2.txt  image2.jpg  LinuxBooks.tar  only_jpg.tar
 ```
-
-
-
+  
 ### Listing An Archive
 One of the actions that "tar" command can do, is to just list what is inside a archive file without extracting the whole content.
   
@@ -79,7 +80,7 @@ $ tar -tvf my_archive.tar
 -rw-rw-r-- adrian/adrian       29 2023-10-22 09:43 file1.txt
 
 ```
-
+  
 ### Updating New Files To Archive Without Recreating Archive
 Use "-r" option.
   
@@ -96,6 +97,7 @@ $ tar -tvf my_archive.tar
 -rw-rw-r-- adrian/adrian       29 2023-10-22 09:43 file1.txt
 -rw-rw-r-- adrian/adrian       85 2023-10-22 09:43 file2.txt
 ```
+  
 ### Archives And Adds New Files To Archive
 Use "-u" option.
   
@@ -113,9 +115,8 @@ $ tar -tvf my_archive.tar
 -rw-rw-r-- adrian/adrian       29 2023-10-22 09:43 file1.txt
 -rw-rw-r-- adrian/adrian       85 2023-10-22 09:43 file2.txt
 -rw-rw-r-- adrian/adrian 10771425 2023-10-14 11:15 image2.jpg
-
 ```
-
+  
 ### Extract Archive In Same Directory
 Use "-x" option to extract.
   
@@ -146,10 +147,12 @@ $ ls
 file1.txt  image1.jpg  LinuxBooks           LinuxBooks.tar  only_jpg.tar
 file2.txt  image2.jpg  LinuxBooksExtracted  my_archive.tar
 ```
+  
 ### Extracting Archive To Specific Location
 Use "-x" option to extract.
   
 Use "-C" to specify location to extract.
+  
 ```
 $ tar -xvf LinuxBooks.tar -C LinuxBooksExtracted/
 LinuxBooks/
@@ -162,12 +165,11 @@ LinuxBooks/learn-linux-in-5-days.pdf
 
 $ ls LinuxBooksExtracted/
 LinuxBooks
-
 ```
-
+  
 ### Extracting Specific Files From Archive
 Seems to be order matters. Option "-C" cannot be at the end.
-  
+   
 ```
 $ tar -tf only_jpg.tar 
 image1.jpg
@@ -179,9 +181,10 @@ image1.jpg
 $ ls otherExtractions/
 image1.jpg
 ```
+  
 ### Deleting File From Archive
 Use the "--delete" option.
-  
+
 ```
 $ tar -vtf my_archive.tar 
 -rw-rw-r-- adrian/adrian 10771425 2023-10-14 11:15 image1.jpg
@@ -196,15 +199,14 @@ $ tar -vtf my_archive.tar
 -rw-rw-r-- adrian/adrian       29 2023-10-22 09:43 file1.txt
 -rw-rw-r-- adrian/adrian 10771425 2023-10-14 11:15 image2.jpg
 ```
+  
 ## Compression
 
 * Compression:makes the files smaller by removing redundant information.
 
 Types of compression:
-* Lossless: no information is removed from the file.
-* Lossy: info might be removed from the file.
-
-Limitation, can only compress files, not directories.
+* **Lossless**: no information is removed from the file. Examples:PNG, ZIP, BMP.
+* **Lossy**: information is permanently removed from file. However, this information is unnoticeable for us humans.Mainly used for images, videos, audios. Examples: JPEG, MP3, WMA.
 
 ### gzip/gunzip
 
@@ -302,8 +304,7 @@ $ gunzip video.mp4.gz
 $ ls
 video.mp4
 ```
-
-
+  
 ### bzip2/bunzip2
 Uses "Burrows-Wheeler" algorithm.
   
@@ -320,6 +321,7 @@ file1.txt  file2.txt  file3.txt  folder  image1.jpg  image2.jpg  LinuxBooks
 ```
 
 ### xz/unxz
+  
 ```
 $ xz file3.txt 
 
@@ -330,9 +332,10 @@ $ unxz file3.txt.xz
 adrian@vivobook:~/Documents/testing$ ls
 file1.txt  file2.txt  file3.txt  folder  image1.jpg  image2.jpg  LinuxBooks
 ```
+  
 ### zip/unzip
 I think this is the only one capable of actually compression whole folder.
-
+  
 ```
 $ zip myfile3.txt.zip file3.txt 
   adding: file3.txt (deflated 58%)
@@ -349,15 +352,14 @@ $ ls
 file1.txt  file2.txt  file3.txt  folder  image1.jpg  image2.jpg  LinuxBooks  myfile3.txt.zip
 
 ```
-
+  
 ## Combining Archiving & Compression
+  
 | Command                                         | Description                                  |
 |-------------------------------------------------|----------------------------------------------|
 | tar -zcf  <file.tar.gz>   <directory/file>  | Creates tar file and compress it with gzip.  |
 | tar -xzcf  <file.tar.gz>   <directory/file> | Creates tar file and compress it with xz.    |
 | tar -jcf  <file.tar.gz>   <directory/file>  | Creates tar file and compress it with bzip2. |
-
-
 
 ## Resources
 * [Compressing files under Linux or UNIX cheat sheet](https://www.cyberciti.biz/howto/question/general/compress-file-unix-linux-cheat-sheet.php#bzip2)
