@@ -62,21 +62,21 @@ First, these exceptions only exist if a debugger is attached. Otherwise, they ar
   
 1. When an application is being debugged, the debugger gets notified whenever an exception is encountered. As this is the first opportunity for the debugger to do something with the exception, this is called a FIRST CHANCE EXCEPTION.
   
-2) At this point, the application is suspended, and the debugger decides how to handle the exception. The first pass through this mechanism is called a "first chance" exception.
+2. At this point, the application is suspended, and the debugger decides how to handle the exception. The first pass through this mechanism is called a "first chance" exception.
   
-3) Depending on the debugger's configuration, it will either resume the application and pass the exception onto the application to handle it, or it will leave the application suspended and enter debug mode. 
+3. Depending on the debugger's configuration, it will either resume the application and pass the exception onto the application to handle it, or it will leave the application suspended and enter debug mode. 
   
-    3.1 If debugger does nothing with exception it passes it onto Application to handle the exception.
+   3.1 If debugger does nothing with exception it passes it onto Application to handle the exception.
       
-    3.2 If debugger handles the FCE, then it will do whatever it was configured to do.
+   3.2 If debugger handles the FCE, then it will do whatever it was configured to do.
   
-4) Assuming exception was thrown, debugger passed exception onto Application, and Application did not handled exception either, then debugger gets re-notified of the exception. In other words, debugger gets a SECOND CHANCE to handle the exception.
+4. Assuming exception was thrown, debugger passed exception onto Application, and Application did not handled exception either, then debugger gets re-notified of the exception. In other words, debugger gets a SECOND CHANCE to handle the exception.
   
-5) Debugger now has a second opportunity to check at this exception, hence Second Chance Exception. If it decided to do something, then it will do it. If it decides to pass the exception, then it will leave debugger.
+5. Debugger now has a second opportunity to check at this exception, hence Second Chance Exception. If it decided to do something, then it will do it. If it decides to pass the exception, then it will leave debugger.
   
-6) Assuming debugger did nothing with the Second Chance Exception, it will pass exception (second chance exception) onto Operating System.
+6. Assuming debugger did nothing with the Second Chance Exception, it will pass exception (second chance exception) onto Operating System.
   
-7) If an exception ever goes to the OS, the OS will always terminate the process. Taking a dump file at a Second Chance Exception is also called “Crash dump”, because these exceptions (Second Chance Exceptions) imminently end up in a termination of the process because the OS handles exceptions by killing them.
+7. If an exception ever goes to the OS, the OS will always terminate the process. Taking a dump file at a Second Chance Exception is also called “Crash dump”, because these exceptions (Second Chance Exceptions) imminently end up in a termination of the process because the OS handles exceptions by killing them.
   
 ## Tools
   
@@ -92,8 +92,7 @@ Installing PORCDUMP.
    
   
 **Most Common PROCDUMP Arguments**
-
-   
+  
 | Parameter | Description |
 |--|--|
 | -ma | Write a dump file with all process memory. The default dump format only includes thread and handle information. |
@@ -131,10 +130,16 @@ The “-w” option can useful when the process has not yet started, it will wai
   
 ### Using PROCDUMP In App Service
   
-This tool is included in App Service. PROCDUMP is located at "C:\devtools\sysinternals\procdump.exe".
+This tool is included in App Service through Kudu Console. 
+  
+PROCDUMP is located at "C:\devtools\sysinternals\procdump.exe".
+  
 Go to Kudu Console.
-    • https://<app-name>.scm.azurewebsites.net
+  
+* https://<app-name>.scm.azurewebsites.net
+  
 Or “Azure Portal > App Service > Advanced Tools > Go”
+  
 Kudu Console:
   
 ![](../assets/img/articles/dumpCollection/img1.png)
