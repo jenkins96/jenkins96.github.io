@@ -210,7 +210,7 @@ Some other useful commands:
   
 ```
 apt-cache stats #shows statistic
-apt-cache unmet #shoes unmet dependencies
+apt-cache unmet #shows unmet dependencies
 apt-cache depends apache2 #shows what packages depends on apache2
 apt-cache rdepends apache2 #shows what packages does apache2 depends on.
 ```
