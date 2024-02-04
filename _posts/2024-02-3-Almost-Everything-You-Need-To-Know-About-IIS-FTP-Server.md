@@ -896,15 +896,15 @@ With this feature we can configure multiple FTP siteson a single IP Address by a
 
 The trick when using virtual hostname is that we when prompted for the username, this should be in the following format:
 
-* hostname|username
+* hostname\|username
 
 So, if “user1” wants to connect to ftpsite01.com, when prompted for username we should use:
 
-* ftpsite01.com|user1
+* ftpsite01.com\|user1
 
 In our case,
 
-* **Username:** ftpsite01.com|user1
+* **Username:** ftpsite01.com\|user1
 
 * **Host name:** ftpsite01.com”
 
@@ -914,7 +914,7 @@ In our case,
 
 Connecting to “ftp://ftpsite02.com”...
 
-Username: ftpsite02.com|user1
+Username: ftpsite02.com\|user1
 
 ![](/assets/img/articles/Almost-Everything-You-Need-To-Know-About-IIS-FTP-Server/img56.png)
 
