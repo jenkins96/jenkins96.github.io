@@ -260,7 +260,7 @@ General Process:
 
 * The client requests the status of the certificate from the OCSP Responder using the serial number of the certificate.
 
-* OCSP Responder replies with either: good | revoked | unknown.
+* OCSP Responder replies with either: good, revoked or, unknown.
 
 Example:
 
@@ -389,7 +389,7 @@ OCSP Response Data:
 
 * CRL is a list of revoked certificates maintained by the CA.
 
-* OCSP is a method where the CA maintains an OCSP Responder that is responsible for replying to OCSP requests with either good|revoked|unknown. The client makes an OCSP request using the certificate's serial number.
+* OCSP is a method where the CA maintains an OCSP Responder that is responsible for replying to OCSP requests with either good, revoked or, unknown. The client makes an OCSP request using the certificate's serial number.
 
 * OCSP Stapling is a method where the server itself periodically queries its own certificate status with its OCSP Responder. The server and client need to support this method. In addition to this, TLS 1.2+ is required.
 
