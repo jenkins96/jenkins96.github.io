@@ -33,15 +33,6 @@ Example:
 ```
 WWW-Authenticate: Basic realm="WallyWorld"
 ```
-
-> Where "WallyWorld" is the string assigned by the server to identify the protection space of the Request-URI. A proxy may respond with the same challenge using the Proxy-Authenticate header field.
-
-> The realm attribute (case-insensitive) is required for all authentication schemes which issue a challenge. The realm value (case-sensitive), in combination with the canonical root URL of the server being accessed, defines the protection space. These realms allow the protected resources on a server to be partitioned into a set of protection spaces, each with its own authentication scheme and/or authorization database. The realm value is a string, generally assigned by the origin server, which may have additional semantics specific to the authentication scheme.  
-
-So, resources in the same realm should share credentials.
-
-But in general I do not think you should pay attention to this. Just let it be...
-
 3. This instructs the Browser to deliver a pop-up for the end user to submit their credentials.
 
 4. The end user submits credentials.
@@ -51,6 +42,16 @@ But in general I do not think you should pay attention to this. Just let it be..
 6. The Server receives the credentials and compares them with the stored credentials it has in its Database.
 
 7. If it matches, it grants access, if not, it will send back a 401.
+
+## Regarding realm attribute
+
+> In above example, "WallyWorld" is the string assigned by the server to identify the protection space of the Request-URI. A proxy may respond with the same challenge using the Proxy-Authenticate header field.
+
+> The realm attribute (case-insensitive) is required for all authentication schemes which issue a challenge. The realm value (case-sensitive), in combination with the canonical root URL of the server being accessed, defines the protection space. These realms allow the protected resources on a server to be partitioned into a set of protection spaces, each with its own authentication scheme and/or authorization database. The realm value is a string, generally assigned by the origin server, which may have additional semantics specific to the authentication scheme.  
+
+So, resources in the same realm should share credentials.
+
+But in general, I do not think you should pay attention to this. Just let it be...
  
 ## Real-live Example:
  
