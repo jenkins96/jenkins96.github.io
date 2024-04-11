@@ -26,13 +26,8 @@ General process:
  
 1. The client sends an anonymous request to the Server. The first request is always anonymous because the client has no way of knowing that the server requires authentication.
 
-2. The Server replies with a 401 and adds a response header with the authentication method it supports and a realm. 
+2. The Server replies with a 401 and adds a response header with the authentication method it supports and a realm (WWW-Authenticate: Basic realm="WallyWorld"). 
 
-Example: 
-
-```
-WWW-Authenticate: Basic realm="WallyWorld"
-```
 3. This instructs the Browser to deliver a pop-up for the end user to submit their credentials.
 
 4. The end user submits credentials.
