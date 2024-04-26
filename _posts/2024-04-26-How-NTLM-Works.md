@@ -40,7 +40,11 @@ So, two HTTP 401's followed by an HTTP 200.
 2. The server lets the client know that the supported authentication mechanism. This is achieved by the server responding with a 401 with a response header "WWW-Authenticate: NTLM".
 
 3. The browser opens a pop-up for the user to input their credentials. 
-   1. The browser re-issues the request with the name of the user it wants to connect-as. This is appended in the request header "Authenticate: T|RM ...".
+   1. The browser re-issues the request with the name of the user it wants to connect-as. This is appended in the request header.
+
+```
+Authenticate: T|RM ..."
+```
 
 4. The server receives this request and generates a random string.
    1. The client browser will ask the Windows API to encrypt the random string with the user's password hash and send this to the server.
@@ -281,4 +285,5 @@ NTLM is comprised of three messages: TLM_NEGOTIATE, NTLM_CHALLENGE, NTLM_AUTHENT
 
 * [authserverallowlist](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#authserverallowlist)
 
+* [ntlm-parser](https://github.com/jlguenego/ntlm-parser)
 
