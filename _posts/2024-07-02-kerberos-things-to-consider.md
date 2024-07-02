@@ -126,6 +126,7 @@ So, if you don't want to enable this policy, then make sure the server is added 
  
 * **DisableAuthNegotiateCnameLookup**: This is an interesting one. As you know for Kerberos to work, SPN must be registered correctly, now it is job of the Browser to construct the SPN based on the information it has. If you disable this policy or don't configure it, the canonical name of the server is used to construct the SPN.
 
+
 ``` 
 # Policy Not Set
 Example.com => 10.0.0.5
