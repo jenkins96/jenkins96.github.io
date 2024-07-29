@@ -103,7 +103,7 @@ In reality, nmap has three port states:
 
 * **Open\|filtered**: Nmap places ports in this state when it is unable to determine whether a port is open or filtered. This occurs for scan types in which open ports give no response. The lack of response could also mean that a packet filter dropped the probe or any response it elicited. So Nmap does not know for sure whether the port is open or being filtered. 
 
-* **Close-filtered**: This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
+* **Close\|filtered**: This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
 
 ## Using Nmap
 
