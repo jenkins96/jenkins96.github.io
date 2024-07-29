@@ -101,9 +101,9 @@ In reality, nmap has three port states:
 
 * **Unfiltered**: The unfiltered state means that a port is accessible, but Nmap is unable to determine whether it is open or closed.
 
-* **Open|filtered**: Nmap places ports in this state when it is unable to determine whether a port is open or filtered. This occurs for scan types in which open ports give no response. The lack of response could also mean that a packet filter dropped the probe or any response it elicited. So Nmap does not know for sure whether the port is open or being filtered. 
+* **Open\|filtered**: Nmap places ports in this state when it is unable to determine whether a port is open or filtered. This occurs for scan types in which open ports give no response. The lack of response could also mean that a packet filter dropped the probe or any response it elicited. So Nmap does not know for sure whether the port is open or being filtered. 
 
-* **Close|filtered**: This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
+* **Close-filtered**: This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
 
 ## Using Nmap
 
@@ -490,7 +490,7 @@ This is the default scan when a SYN scan (-sS) cannot be done.
 https://www.rfc-editor.org/rfc/rfc793.txt
 
 
-> These three scan types are exactly the same in behavior except for the TCP flags set in probe packets. If a RST packet is received, the port is considered closed, while no response means it is open|filtered. The port is marked filtered if an ICMP unreachable error (type 3, code 0, 1, 2, 3, 9, 10, or 13) is received.
+> These three scan types are exactly the same in behavior except for the TCP flags set in probe packets. If a RST packet is received, the port is considered closed, while no response means it is open\|filtered. The port is marked filtered if an ICMP unreachable error (type 3, code 0, 1, 2, 3, 9, 10, or 13) is received.
 
 The key advantage of these scan types is that they can sneak through certain non-stateful firewalls and packet-filtering routers. Another advantage is that these scan types are a little more stealthy than even a SYN scan. Don't count on this though—most modern IDS products can be configured to detect them. The big downside is that not all systems follow RFC 793 to the letter. Several systems send RST responses to the probes regardless of whether the port is open or not. This causes all of the ports to be labeled closed.
 
@@ -564,11 +564,11 @@ Also, stateful firewall will typically drop the package if they don't know how t
 | Other ICMP unreachable errors (type 3, code 1, 2, 9, 10, or 13) | filtered |
 
 
-> The most curious element of this table may be the open|filtered state. It is a symptom of the biggest challenges with UDP scanning: open ports rarely respond to empty probes. Those ports for which Nmap has a protocol-specific payload are more likely to get a response and be marked open, but for the rest, the target TCP/IP stack simply passes the empty packet up to a listening application, which usually discards it immediately as invalid. If ports in all other states would respond, then open ports could all be deduced by elimination. Unfortunately, firewalls and filtering devices are also known to drop packets without responding. So when Nmap receives no response after several attempts, it cannot determine whether the port is open or filtered. 
+> The most curious element of this table may be the open\|filtered state. It is a symptom of the biggest challenges with UDP scanning: open ports rarely respond to empty probes. Those ports for which Nmap has a protocol-specific payload are more likely to get a response and be marked open, but for the rest, the target TCP/IP stack simply passes the empty packet up to a listening application, which usually discards it immediately as invalid. If ports in all other states would respond, then open ports could all be deduced by elimination. Unfortunately, firewalls and filtering devices are also known to drop packets without responding. So when Nmap receives no response after several attempts, it cannot determine whether the port is open or filtered. 
 
 > UDP scan works by sending a UDP packet to every targeted port. For most ports, this packet will be empty (no payload), but for a few of the more common ports, a protocol-specific payload will be sent. Based on the response, or lack thereof, the port is assigned to one of four states.
 
-**open|filtered** = got no response. we sent an empty packet, the application received it and did nothing as is empty OR it got filtered by a Firewall.
+**open\|filtered** = got no response. we sent an empty packet, the application received it and did nothing as is empty OR it got filtered by a Firewall.
 
 ![](/assets/img/articles/nmap/img14.png)
 
@@ -725,7 +725,7 @@ sudo nmap -sS -p 80 -D 45.45.45.45 -e <int> scanme.nmap.org
 ```
 ![](/assets/img/articles/nmap/img19.png)
 
-**Using multiple fake IP **Addresses**
+**Using multiple fake IP Addresses**
 
 ```
 sudo nmap -sS -p 80 -D 45.45.45.45,20.20.20.20,53.53.53.53 -e <int>  scanme.nmap.org
@@ -817,7 +817,7 @@ sudo nmap -p 80 --source-port 49001 scanme.nmap.org
 * [Nmap Tutorial](https://hackertarget.com/nmap-tutorial/)
 * [Nmap Commands - List of Top Nmap Command](https://intellipaat.com/blog/nmap-commands/)
 * [NMAP basics Tutorial](https://linuxhint.com/nmap_basics_tutorial/)
-* [Stealth Scans With Nmap]https://linuxhint.com/stealth_scans_nmap/)
+* [Stealth Scans With Nmap](https://linuxhint.com/stealth_scans_nmap/)
 * [Nmap Flags and What They Do](https://linuxhint.com/nmap_flags/)
 * [NSE Scripts](https://nmap.org/nsedoc/scripts/)
 * [How Nmap really works](https://www.youtube.com/watch?v=F2PXe_o7KqM)
