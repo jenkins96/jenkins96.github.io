@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Client Certtificate Authentication & TLS 1.3
+title: Client Certificate Authentication & TLS 1.3
 subtitle: Guide
 gh-repo: jenkins96/jenkins96.github.io
 gh-badge: [star, fork, follow]
