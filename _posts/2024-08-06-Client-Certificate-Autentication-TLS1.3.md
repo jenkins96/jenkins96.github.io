@@ -1,4 +1,12 @@
-
+---
+layout: post
+title: Client Certtificate Authentication & TLS 1.3
+subtitle: Guide
+gh-repo: jenkins96/jenkins96.github.io
+gh-badge: [star, fork, follow]
+tags: [iis, tls authentication]
+comments: true
+---
 
 ## What Is Client Certificate Authentication
 
@@ -138,22 +146,59 @@ Site can now be accessed because it is using TLS 1.2
 
 
 ### Set HTTP.SYS To Require Cert
-Since TLS 1.3 does not allow renegotiation, we can set HTTP.SYS to ask for a certificate to end user. In this case, we will be able to see "Certificate Request" in the "Server Hello" as this will be happening in this first an only TLS negotiattion.
 
-However, take into consideration, based in my understaind, that doing this is not compliant with TLS 1.3 RFC. A "Certificate Request" message should not be sent in the main handshake, UNLESS the client sent the "post_handshake_auth" extension in the "Client Hello".
+Since TLS 1.3 does not allow renegotiation, we can set HTTP.SYS to ask for a certificate to the end user.
 
-4.3.2.  Certificate Request
+However, take into consideration, based on my understanding, that doing this is not compliant with TLS 1.3 RFC 8446. A "Certificate Request" message should not be sent in the main handshake, UNLESS the client has sent the "post_handshake_auth" extension in the "Client Hello".
+
+**4.3.2.  Certificate Request**
+
 > Servers which are authenticating with a PSK MUST NOT send the CertificateRequest message in the main handshake, though they MAY send it in post-handshake authentication (see Section 4.6.2) provided that the client has sent the "post_handshake_auth" extension (see Section 4.2.6).
 
-#### Certificate Bound To IP Address
+Anyways, the way we achieve this is very similar to disable TLS 1.3.
 
 
+Go to the Registry and disable for specific certificate. May vary depending to where certificate is attached (IP or hostname):
+"Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters\SslBindingInfo\0.0.0.0:443"
 
-#### Certificate Bound To Hostname
+```
+net stop http
+```
 
-#### Certificate Using Central Certificate Store(CCS)
+"DefaultFlags" DWORD32 = 2
+
+Notice "Negotiate Client Certificate" is now "Enabled.
+
+```
+C:\Users\sysadmin>netsh http show sslcert
+
+SSL Certificate bindings:
+-------------------------
+    IP:port                      : 0.0.0.0:443
+    Certificate Hash             : 2ace368a90d2117be7a0065dfe259b2e8c94f538
+    Application ID               : {4dc3e181-e14b-4a21-b022-59fc669b0914}
+    Certificate Store Name       : My
+    Verify Client Certificate Revocation : Enabled
+    Verify Revocation Using Cached Client Certificate Only : Disabled
+    Usage Check                  : Enabled
+    Revocation Freshness Time    : 0
+    URL Retrieval Timeout        : 0
+    Ctl Identifier               : (null)
+    Ctl Store Name               : (null)
+    DS Mapper Usage              : Disabled
+    Negotiate Client Certificate : Enabled
+    Reject Connections           : Disabled
+    Disable HTTP2                : Not Set
+    Disable QUIC                 : Not Set
+    Disable TLS1.2               : Not Set
+    Disable TLS1.3               : Not Set
+```
+Now the site is accessible even though TLS 1.3 is being used.
+
+This can also be changed using netsh tool.
 
 ## Resources
+
 * [Windows Server 2022 IIS web site TLS 1.3 does not work with client certificate authentication](https://techcommunity.microsoft.com/t5/iis-support-blog/windows-server-2022-iis-web-site-tls-1-3-does-not-work-with/ba-p/4129738)
 
 * [RFC 8446](https://datatracker.ietf.org/doc/html/rfc8446)
