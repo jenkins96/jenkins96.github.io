@@ -48,7 +48,7 @@ comments: true
 
 * (Don't be so hard with my drawing):
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img1.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img1.png)
 
 * **Stage 1**: A compromised legitimate website that has been injected with malicious JavaScript. This site is what the user visits unknowingly.
 * **Stage 2**: A malicious or attacker-controlled server that receives traffic from Stage 1 and delivers additional JavaScript or the actual malware payload.
@@ -116,7 +116,7 @@ dns.qry.name eq modandcrackedapk.com
 modandcrackedapk.com => 193.42.38.139
 ```
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img2.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img2.png)
 
 * The rest of the alerts involves the same addresses. What I can tell from below image:
 	* Victim's details:
@@ -132,7 +132,7 @@ modandcrackedapk.com => 193.42.38.139
 ip.addr eq 10.11.26.183 and ip.addr eq 194.180.191.64 and http
 ```
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img3.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img3.png)
 
 * To find out the Windows user account we can filter for Kerberos traffic and look for the Authentication Request (AS-REQ)
 
@@ -142,7 +142,7 @@ kerberos.as_req_element
 
 * NEMOTODES\oboomwald
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img4.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img4.png)
 
 * To find out the actual name of the person we can find this in the LDAP protocol. In the pcap LDAP is being used instead of LDAPS, good for us. We can search for packets that contain common attributes like "givenName".
 	* Oliver Q Boomwald
@@ -151,7 +151,7 @@ kerberos.as_req_element
 ldap.AttributeDescription eq givenName
 ```
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img5.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img5.png)
 
 * As for how to find out which was likely the site that got compromised there is no way for me to objectively determine from within just the pcap. Maybe something I missed?? Sure, I see some funny domain names in the pcap, but I simply cannot conclude that "X" site was the site that got compromised.
 	* From outside research you may find that one of these site is/was "classicgrand.com" and that would be the answer for this exercise.
@@ -165,7 +165,7 @@ tls.handshake.extensions_server_name == "modandcrackedapk.com" || tls.handshake.
 tls.handshake.type eq 1 # For Client Hello
 ```
 
-![](/assets/img/articles/SmartApeSg-Network-Analysis/img6.png)
+![](/assets/img/articles/SmartApeSG-Network-Analysis/img6.png)
 
 ### Incident Report
 #### Executive Summary
