@@ -1,10 +1,10 @@
 ---
 layout: post
 title: ZPHP/SmartApeSG Malware Traffic Analysis
-subtitle: Guide
+subtitle: Network analysis
 gh-repo: jenkins96/jenkins96.github.io
 gh-badge: [star, fork, follow]
-tags: [book review, hacking, security]
+tags: [malware, digital forensics, security, network analysis]
 comments: true
 ---
 
