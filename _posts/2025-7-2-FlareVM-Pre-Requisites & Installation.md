@@ -29,17 +29,17 @@ FlareVM is a Windows-based virtual machine (VM) pre-configured for malware analy
 ![](../assets\img\articles\Flare-VM\flarevm-pre.png)
 
 
-* Disable Tamper Protection
+* **Disable Tamper Protection**
     * Defender > Virus & Threat Protection > Viruts & Threat Protection Settings > Manage Settings and disable all options.
 
 ![](../assets\img\articles\Flare-VM\img1.png)
 
-* Disable any kind of AntiVirus(e.g., Windows Defender).
+* **Disable any kind of AntiVirus(e.g., Windows Defender)**
     * Administrative Templates > Windows Components > Microsoft Defender Antivirus > "Turn off Microsoft Defender Antivirus" **(Enable this)**
 
 ![](../assets\img\articles\Flare-VM\img2.png)
 
-* Disable Windows Firewall.
+* **Disable Windows Firewall**
     * Administrative Templates > Network > Network Connections >Windows Defender Firewall
         * Domain Profile > Windows Defender Firewall: Protect all network connections = **Disabled**
         * Standard Profile > Windows Defender Firewall: Protect all network connections = **Disabled**
@@ -47,7 +47,7 @@ FlareVM is a Windows-based virtual machine (VM) pre-configured for malware analy
 ![](../assets\img\articles\Flare-VM\img3.png)
 ![](../assets\img\articles\Flare-VM\img4.png)
 
-* Disable Windows Updates.
+* **Disable Windows Updates**
     * Administrative Templates > Windows Components > Windows Update > Configure Automatic Updates = Disabled
 
 ![](../assets\img\articles\Flare-VM\img5.png)
