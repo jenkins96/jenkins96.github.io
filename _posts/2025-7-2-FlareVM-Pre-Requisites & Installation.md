@@ -1,7 +1,6 @@
-
 ---
 layout: post
-title: FlareVM Pre-Requisites & Installation
+title: FlareVM Pre-Requisites And Installation
 subtitle: FlareVM Pre-Requisites
 gh-repo: jenkins96/jenkins96.github.io
 gh-badge: [star, fork, follow]
