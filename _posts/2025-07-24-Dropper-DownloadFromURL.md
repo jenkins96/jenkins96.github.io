@@ -14,4 +14,4 @@ comments: true
 Just an exercise to improve reporting capabilities and malware analysis:
 
 
-![PDF Report Dropper.DownloadFromURL](../assets/files/Dropper.DownloadFromURL/Dropper.DownloadFromURL.pdf)
+![PDF Report Dropper.DownloadFromURL](https://github.com/jenkins96/MalwareAnalysisPractice/blob/main/Reports/Dropper.DownloadFromURL.pdf)
