@@ -13,5 +13,6 @@ comments: true
 
 Just an exercise to improve reporting capabilities and malware analysis:
 
+* https://github.com/jenkins96/MalwareAnalysisPractice/blob/main/Reports/Dropper.DownloadFromURL.pdf
 
-![PDF Report Dropper.DownloadFromURL](https://github.com/jenkins96/MalwareAnalysisPractice/blob/main/Reports/Dropper.DownloadFromURL.pdf)
+
