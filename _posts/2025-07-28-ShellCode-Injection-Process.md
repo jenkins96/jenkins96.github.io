@@ -10,7 +10,7 @@ comments: true
 
 ## What Is Process Injection?
 
-* It is the process of injecting code into the memory space of another process. Think of opening a legitimate process and somehow tha attacker managed to inject some arbitrary code inside your  process as if it was part of that legitimate program in the first place.
+* It is the process of injecting code into the memory space of another process. Think of opening a legitimate process and somehow the attacker managed to inject some arbitrary code inside your  process as if it was part of that legitimate program in the first place.
 * The code that runs inside of the legitimate process has all of the attributes and metadata of that process.
 
 
